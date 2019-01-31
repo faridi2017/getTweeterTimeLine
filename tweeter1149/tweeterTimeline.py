@@ -26,10 +26,10 @@ print('=======================')
 
 def tweet_timeline(user_name, count):
     api_keys = tweeterKey.api_keys()
-    api = twitter.Api(consumer_key=api_keys['consumer_key'],
-                      consumer_secret=api_keys['consumer_secret'],
-                      access_token_key=api_keys['access_token'],
-                      access_token_secret=api_keys['access_token_secret'])
+    api = twitter.Api(consumer_key=api_keys['consumer_key'][:-1],
+                      consumer_secret=api_keys['consumer_secret'][:-1],
+                      access_token_key=api_keys['access_token'][:-1],
+                      access_token_secret=api_keys['access_token_secret'][:-1])
     screen_name = user_name
     statuses = api.GetUserTimeline(screen_name=screen_name, count=count)
     tweet_list = [s.text for s in statuses]
